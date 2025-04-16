@@ -1,0 +1,266 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Салон тюнінгу автомобілей</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+  <header>
+    <nav class="left">
+      <a href="#about">Про студію</a>
+      <a href="#founders">Засновники</a>
+      <a href="#jobs">Роботи</a>
+    </nav>
+    <img class="logo" src="https://static.tildacdn.one/tild3964-6137-4364-a162-623662353631/13-removebg-preview_.png" alt="LOGO">
+    <nav class="right">
+      <a href="#services">Послуги</a>
+      <a href="#contacts">Контакти</a>
+      <a href="#advice">Консультація</a>
+    </nav>
+  </header>
+
+  <section class="projects-section" id="founders">
+    <div class="projects-container">
+      <button class="arrow arrow-left">❮</button>
+      <div class="projects" id="projects-scroll">
+        <div class="slide">
+          <img src="https://static.tildacdn.one/tild3333-3235-4939-b336-663364616663/___4.png" alt="Slide 1">
+          <div class="overlay"></div>
+          <div class="slide-text">ПРОФЕСІЙНА СТАЙЛІНГ СТУДІЯ</div>
+        </div>
+        <div class="slide">
+          <img src="https://static.tildacdn.one/tild6463-3537-4431-b062-346339366536/49ec4ff4-ec3b-47aa-9.jpg" alt="Slide 2">
+          <div class="overlay"></div>
+          <div class="slide-text">ЧИП-ТЮНІНГ І ДЕТЕЙЛІНГ</div>
+        </div>
+        <div class="slide">
+          <img src="https://static.tildacdn.one/tild3836-3366-4439-b530-346230353630/71da4f1a-0687-4e27-a.jpg" alt="Slide 3">
+          <div class="overlay"></div>
+          <div class="slide-text">ОБКЛЕЮВАННЯ АВТО ПЛІВКОЮ</div>
+        </div>
+      </div>
+      <button class="arrow arrow-right">❯</button>
+    </div>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-content">
+      <div class="about-text">
+        <h1>Про студію</h1><br>
+        <strong>Dark Glue</strong><span> займається обклеюванням і стайлінгом автомобілів з 2020 року.</span>
+          <br><br>  
+          <p>Використовуємо лише найкращі матеріали та обладнання від визнаних світових виробників.</p>
+          <br><br>
+          <p>А наша <strong>Команда</strong> – професіонали своєї справи, які регулярно підвищують свою кваліфікацію. <strong>Команда</strong> однодумців , які обожнюють автомобілі і знають все про правильний догляд і добре виконану роботу.</p>
+          <br><br>
+          <p>Ми <strong>захищаємо</strong> ваші улюблені автомобілі та додаємо <strong>індивідуальності</strong> кожному з них.</p>
+          <br><br>
+          <p>Основна наша перевага - це <strong>якість</strong>.</p>
+      </div>
+      <div class="about-images">
+        <img src="https://static.tildacdn.one/tild6331-3361-4264-a463-353538396565/dotcars-antigravijny.jpg" width="326" height="440">
+        <img src="https://static.tildacdn.one/tild3934-6363-4763-a664-633362353562/photo_2023-11-27_11-.jpg" width="214" height="259">
+        <img src="https://static.tildacdn.one/tild6266-3563-4235-b161-626663343361/noroot.jpg" width="342" height="214">  
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section" id="services">
+    <h2>Послуги</h2>
+    <div class="services-gallery">
+      <div class="service-card card1">
+        <div class="service-overlay"></div>
+        <div class="service-title">Прозорий захист</div>
+      </div>
+      <div class="service-card card2">
+        <div class="service-overlay"></div>
+        <div class="service-title">Матовий захист</div>
+      </div>
+      <div class="service-card card3">
+        <div class="service-overlay"></div>
+        <div class="service-title">Заміна кольору</div>
+      </div>
+      <div class="service-card card4">
+        <div class="service-overlay"></div>
+        <div class="service-title">Захист салону</div>
+      </div>
+      <div class="service-card card5">
+        <div class="service-overlay"></div>
+        <div class="service-title">Нанесення антидощу</div>
+      </div>
+      <div class="service-card card6">
+        <div class="service-overlay"></div>
+        <div class="service-title">Нанесення кераміки</div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="login-section">
+  <h2>Отримайте консультацію нашого менеджера</h2>
+  <p>Заповніть поля нижче і наш менеджер зв'яжеться з вами найближчим часом</p>
+  <form class="login-form" method="post">
+    {% csrf_token %}
+    {% render_field form.name placeholder="Імʼя" class="form-control" %}
+    {% render_field form.phone placeholder="Номер телефону" class="form-control" %}
+    {% if form.errors %}
+    <div class="form-errors">
+      {{ form.errors }}
+    </div>
+    {% endif %}
+    <button type="submit">Отримати консультацію</button>
+  </form>
+</section>
+
+<section class="four-images-section" id="jobs">
+  <h2 class="section-title">Наші роботи</h2>
+  <div class="image-grid">
+    <div class="image-card">
+      <a href="/cars/1">
+        <div class="image-wrapper">
+          <img src="{% static 'img/volkswagen1.jpg' %}" class="default-img" alt="Volkswagen ID.4">
+          <img src="{% static 'img/volkswagen2.jpg' %}" class="hover-img" alt="Volkswagen ID.4 Hover">
+        </div>
+        <div class="card-info">
+          <h3>Volkswagen ID.4</h3>
+          <p>Видалення вм'ятин та подряпин, полірування та фарбування, обклеювання автовінілом, хромування деталей. Чіп-тюнінг, дітейлінг моторного відсіку.</p>
+        </div>
+      </a>
+    </div>
+    <div class="image-card">
+      <a href="/cars/2">
+        <div class="image-wrapper">
+          <img src="{% static 'img/bmw1.jpg' %}" class="default-img" alt="BMW I7">
+          <img src="{% static 'img/bmw2.jpg' %}" class="hover-img" alt="BMW I7 Hover">
+        </div>
+        <div class="card-info">
+          <h3>BMW I7</h3>
+          <p>Капітальна реставрація, відновлення інтер'єру та екстер'єру, перетяжка салону. Видалення вм'ятин та подряпин, фарбування та нанокерамічне покриття, чіп-тюнінг.</p>
+        </div>
+      </a>
+    </div>
+    <div class="image-card">
+      <a href="/cars/3">
+        <div class="image-wrapper">
+          <img src="{% static 'img/audi1.jpg' %}" class="default-img" alt="Audi RSQ8">
+          <img src="{% static 'img/audi2.jpg' %}" class="hover-img" alt="Audi RSQ8 Hover">
+        </div>
+        <div class="card-info">
+          <h3>Audi RSQ8</h3>
+          <p>Полірування та фарбування, видалення вм'ятин, покриття нанокерамікою, встановлення охоронних систем.</p>
+        </div>
+      </a>
+    </div>
+    <div class="image-card">
+      <a href="/cars/4">
+        <div class="image-wrapper">
+          <img src="{% static 'img/porsche1.jpg' %}" class="default-img" alt="Porsche 911">
+          <img src="{% static 'img/porsche2.jpg' %}" class="hover-img" alt="Porsche 911 Hover">
+        </div>
+        <div class="card-info">
+          <h3>Porsche 911</h3>
+          <p>Перетяжка салону, встановлення додаткової мультимедіа апаратури, чіп-тюнінг, обклеювання автовінілом.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="price-list-section">
+  <h2 class="section-title">Прайс-Ліст</h2>
+  <div class="price-list-grid">
+    <div class="price-card">
+      <div class="price-icon"></div>
+      <h3>Стандарт</h3>
+      <p>Входить частина капоту (40 см), частина передніх крил, передня оптика, повністю бампер, дзеркала та зони під руками.</p>
+      <p class="price">від 450$</p>
+      <button class="price-button">Join now</button>
+    </div>
+
+    <div class="price-card">
+      <div class="price-icon"></div>
+      <h3>Стандарт ++</h3>
+      <p>Входить повністю капот, повністю передні крила, передня оптика, повністю бампер, дзеркала та зони під руками.</p>
+      <p class="price">від 750$</p>
+      <button class="price-button">Join now</button>
+    </div>
+
+    <div class="price-card">
+      <div class="price-icon"></div>
+      <h3>Повний захист</h3>
+      <p>Повне обклеювання лакофарбового покриття та оптики автомобіля.</p>
+      <p class="price">від 3050$</p>
+      <button class="price-button">Join now</button>
+    </div>
+  </div>
+</section>
+
+<section class="login-section" id="advice">
+  <h2>Отримайте консультацію нашого менеджера</h2>
+  <p>Заповніть поля нижче і наш менеджер зв'яжеться з вами найближчим часом</p>
+  <form class="login-form" method="post">
+    {% csrf_token %}
+    {% render_field form.name placeholder="Імʼя" class="form-control" %}
+    {% render_field form.phone placeholder="Номер телефону" class="form-control" %}
+    {% if form.errors %}
+    <div class="form-errors">
+      {{ form.errors }}
+    </div>
+    {% endif %}
+    <button type="submit">Отримати консультацію</button>
+  </form>
+</section>
+
+
+<section class="carousel-section">  <!-- Не трогать, блок с партнёрами -->
+  <div class="carousel-container">
+    <div class="carousel-track">
+    </div>
+  </div>
+</section>
+
+<section class="contacts-section" id="contacts">
+  <h2>Контакти</h2>
+  <div class="contacts-grid">
+    <div class="contact-item">
+      <img src="{% static 'img/contact.jpg' %}" alt="Phone Icon" class="contact-icon">
+      <h3>Контакти</h3>
+      <p>+38 (097) 933 94 02</p>
+      <p>+38 (067) 830 72 32</p>
+    </div>
+    <div class="contact-item">
+      <img src="{% static 'img/location.jpg' %}" alt="Location Icon" class="contact-icon">
+      <h3>Адреса</h3>
+      <p>вул. Озерна 28, Кільцева дорога</p>
+    </div>
+    <div class="contact-item">
+      <img src="{% static 'img/social-network.jpg' %}" alt="Social Media Icon" class="contact-icon">
+      <h3>Соціальні мережі</h3>
+      <div class="social-links">
+        <a href="#" target="_blank"></a>
+        <a href="#" target="_blank"></a>
+        <a href="#" target="_blank"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div id="map"></div>
+</section>
+
+
+<footer>
+  &copy; 2025 DarkGlue. Всі права захищені.
+</footer>
+  
+</body>
+<script src="{% static 'js/script.js' %}"></script>
+</html>

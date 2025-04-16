@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMW I7{{ car_name }}</title>
+  <link rel="stylesheet" href="{% static 'css/cars.css' %}">
+</head>
+<body>
+  <a href="/" class="back-link">← Повернутися назад</a>
+
+  <div class="content-wrapper">
+
+    <div class="carousel-container">
+      <div class="carousel-track">
+        {% for i in images %}
+        <div class="carousel-slide">
+          <img src="{{ i.image.url }}" alt="Img">
+        </div>
+        {% endfor %}
+      </div>
+      <div class="carousel-buttons">
+        <button class="carousel-button prev">❮</button>
+        <button class="carousel-button next">❯</button>
+      </div>
+      <div class="carousel-thumbnails">
+        {% for i in images %}
+        <img src="{{ i.image.url }}" alt="Thumbnail" data-index="1">
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="carousel-info">
+      <h2>{{ cars.car_name }}</h2>
+      <ul>
+        {% for i in car_description %}
+        <li>{{ i }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</body>
+<script src="{% static 'js/cars.js' %}"></script>
+</html>
