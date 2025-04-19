@@ -36,7 +36,6 @@ h1 {
 }
 .left a { margin-right: 80px; }
 .right a { margin-left: 80px; }
-
 .about {
   background-image: url('https://static.tildacdn.com/tild3137-6461-4037-a334-663631353963/photo.png');
   background-size: cover;
@@ -48,7 +47,6 @@ h1 {
   text-align: left;
   padding: 40px 20px;
 }
-
 .about-content {
   display: flex;
   gap: 40px;
@@ -58,7 +56,6 @@ h1 {
   max-width: 1200px;
   width: 100%;
 }
-
 .about-text {
   background: rgba(0, 0, 0, 0.8);
   font-size: 18px;
@@ -69,12 +66,10 @@ h1 {
   transform: translateY(50px);
   transition: all 1s ease;
 }
-
 .about-text.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 .about-images {
   position: relative;
   width: 100%;
@@ -82,14 +77,12 @@ h1 {
   height: 550px;
   flex: 1 1 300px;
 }
-
 .about-images img {
   position: absolute;
   object-fit: cover;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }
-
 .about-images img:nth-child(1) {
   top: 0;
   left: 0;
@@ -98,7 +91,6 @@ h1 {
   max-height: 420px;
   z-index: 1;
 }
-
 .about-images img:nth-child(2) {
   top: 10%;
   left: 45%;
@@ -107,7 +99,6 @@ h1 {
   max-height: 250px;
   z-index: 2;
 }
-
 .about-images img:nth-child(3) {
   top: 60%;
   left: 20%;
@@ -116,14 +107,11 @@ h1 {
   max-height: 230px;
   z-index: 3;
 }
-
-/* 🔻 Мобильная версия */
 @media (max-width: 768px) {
   .about-content {
     flex-direction: column;
     align-items: center;
   }
-
   .about-images {
     height: auto;
     display: flex;
@@ -131,14 +119,12 @@ h1 {
     gap: 20px;
     position: static;
   }
-
   .about-images img {
     position: static;
     width: 100%;
     height: auto;
   }
 }
-
 .projects-section {
   max-width: 100%;
   margin: 0 auto;
@@ -153,6 +139,7 @@ h1 {
   transition: transform 0.5s ease-in-out;
 }
 .slide {
+  overflow: hidden;
   position: relative;
   flex-shrink: 0;
   width: 100%;
@@ -163,25 +150,56 @@ h1 {
   height: 100%;
   object-fit: cover;
 }
+#projects-scroll {
+  width: 100%;
+  height: 805px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: background-image 1s ease-in-out;
+}
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.55);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
   z-index: 1;
+  transition: background 0.5s ease;
 }
 .slide-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 50px;
+  color: white;
+  font-size: 36px;
   font-weight: bold;
   z-index: 2;
+  position: relative;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.slide-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  #projects-scroll {
+    height: 800px;
+  }
+  .slide-text {
+    font-size: 28px;
+  }
+}
+@media (max-width: 480px) {
+  #projects-scroll {
+    height: 700px;
+  }
+  .slide-text {
+    font-size: 22px;
+    padding: 0 20px;
+  }
 }
 .arrow {
   position: absolute;
@@ -199,23 +217,26 @@ h1 {
 }
 .arrow-left { left: 10px; }
 .arrow-right { right: 10px; }
-
 .dots {
-  text-align: center;
-  margin: 20px 0;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
 }
 .dot {
-  height: 12px;
   width: 12px;
-  margin: 0 5px;
-  background-color: #bbb;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.3s ease;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-.dot.active { background-color: #fff; }
-
+.dot.active {
+  background-color: white;
+}
 .section {
   padding: 100px 20px;
   text-align: center;
@@ -227,7 +248,6 @@ h1 {
   opacity: 1;
   transform: translateY(0);
 }
-
 .trust-section {
   background-color: #000;
   color: #fff;
@@ -235,47 +255,39 @@ h1 {
   padding: 80px 20px;
   font-family: 'Arial', sans-serif;
 }
-
 .trust-section h2 {
   font-size: 40px;
   margin-bottom: 50px;
 }
-
 .trust-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
 }
-
 .trust-item {
   max-width: 250px;
 }
-
 .trust-item img {
   height: 100px;
   margin-bottom: 20px;
 }
-
 .trust-item h3 {
   font-size: 20px;
   margin-bottom: 10px;
   font-weight: bold;
 }
-
 .trust-item p {
   font-size: 14px;
   color: #ccc;
   line-height: 1.5;
 }
-
 footer {
   background-color: #000;
   color: #fff;
   padding: 60px 20px;
   text-align: center;
 }
-
 .login-section {
   background-color: #000000;
   padding: 60px 20px;
@@ -283,18 +295,15 @@ footer {
   color: #fff;
   font-family: 'Arial', sans-serif;
 }
-
 .login-section h2 {
   font-size: 32px;
   margin-bottom: 10px;
 }
-
 .login-section p {
   font-size: 16px;
   margin-bottom: 30px;
   color: #ccc;
 }
-
 .login-form {
   display: flex;
   justify-content: center;
@@ -304,7 +313,6 @@ footer {
   max-width: 1500px;
   margin: 0 auto;
 }
-
 .login-form input {
   padding: 15px;
   border: 2px solid #ffffff;
@@ -315,12 +323,10 @@ footer {
   width: 320px;
   transition: border-color 0.3s;
 }
-
 .login-form input:focus {
   border-color: #371fc8;
   outline: none;
 }
-
 .login-form button {
   padding: 18px 30px;
   background-color: #371fc8;
@@ -333,23 +339,19 @@ footer {
   border-radius: 5px;
   transition: background-color 0.3s;
 }
-
 .login-form button:hover {
   background-color: #371fc8;
 }
-
 .four-images-section {
   padding: 60px 20px;
   background-color: #000;
   text-align: center;
 }
-
 .section-title {
   font-size: 2rem;
   color: #fff;
   margin-bottom: 30px; 
 }
-
 .image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -378,7 +380,6 @@ footer {
   object-fit: cover;
   transition: opacity 0.6s ease;
 }
-
 .image-wrapper .hover-img {
   opacity: 0;
 }
@@ -388,7 +389,6 @@ footer {
 .image-wrapper:hover .default-img {
   opacity: 0;
 }
-
 .card-info {
   text-align: center;
   margin-top: 10px;
@@ -556,6 +556,11 @@ footer {
   
 }
 
+@media (max-width: 1100px) {
+  .carousel-section {
+    display: none;
+  }
+}
 .contacts-section {
   padding: 60px 20px;
   background-color: #000;
@@ -611,178 +616,185 @@ footer {
   text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+      
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+      
+  header nav {
+    margin: 10px 0;
+  }
+      
+  .logo {
+    max-width: 150px;
+    margin: 10px 0;
+  }
+      
+  .projects-container {
+    flex-direction: column;
+    align-items: center;
+  }
+      
+  .projects {
+    overflow-x: scroll;
+    display: flex;
+    gap: 10px;
+  }
+      
+  .slide {
+    min-width: 80%;
+  }
+      
+  .about-content {
+    flex-direction: column;
+    padding: 20px;
+  }
+      
+  .about-images img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
 
-        /* Загальні стилі для мобільних пристроїв */
-        @media (max-width: 768px) {
-          body {
-            font-size: 14px;
-          }
+  @media (max-width: 768px) {
+    .about-images {
+      display: none;
+    }
+  }
       
-          header {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-          }
+  .services-gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
       
-          header nav {
-            margin: 10px 0;
-          }
+  .service-card {
+    aspect-ratio: auto;
+  }
       
-          .logo {
-            max-width: 150px;
-            margin: 10px 0;
-          }
+  .four-images-section .image-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
       
-          .projects-container {
-            flex-direction: column;
-            align-items: center;
-          }
+  .price-list-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
       
-          .projects {
-            overflow-x: scroll;
-            display: flex;
-            gap: 10px;
-          }
+  .contacts-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
       
-          .slide {
-            min-width: 80%;
-          }
+  footer {
+    text-align: center;
+    padding: 10px;
+  }
+}
       
-          .about-content {
-            flex-direction: column;
-            padding: 20px;
-          }
+@media (max-width: 480px) {
+  .back-link {
+    font-size: 12px;
+  }
       
-          .about-images img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-          }
+  h1, h2, h3 {
+    font-size: 1.2rem;
+  }
       
-          .services-gallery {
-            grid-template-columns: 1fr;
-            gap: 15px;
-          }
+  .carousel-container {
+    max-width: 100%;
+  }
       
-          .service-card {
-            aspect-ratio: auto;
-          }
+  .carousel-thumbnails img {
+    width: 80px;
+    height: 50px;
+  }
       
-          .four-images-section .image-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-          }
+  .login-form input, .login-form button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
       
-          .price-list-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-          }
-      
-          .contacts-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-          }
-      
-          footer {
-            text-align: center;
-            padding: 10px;
-          }
-        }
-      
-        /* Додаткові стилі для дуже маленьких екранів */
-        @media (max-width: 480px) {
-          .back-link {
-            font-size: 12px;
-          }
-      
-          h1, h2, h3 {
-            font-size: 1.2rem;
-          }
-      
-          .carousel-container {
-            max-width: 100%;
-          }
-      
-          .carousel-thumbnails img {
-            width: 80px;
-            height: 50px;
-          }
-      
-          .login-form input, .login-form button {
-            width: 100%;
-            margin-bottom: 10px;
-          }
-      
-          .login-form button {
-            font-size: 14px;
-          }
-        }
+  .login-form button {
+    font-size: 14px;
+  }
+}
 
-        .services-section {
-          padding: 80px 20px;
-          background-color: #000;
-          color: white;
-          text-align: center;
-        }
+.services-section {
+  padding: 80px 20px;
+  background-color: #000;
+  color: white;
+  text-align: center;
+}
       
-        .services-section h2 {
-          font-size: 2.5rem;
-          margin-bottom: 40px;
-        }
+.services-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
       
-        .services-gallery {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 20px;
-          max-width: 1000px;
-          margin: 0 auto;
-        }
+.services-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
       
-        .service-card {
-          position: relative;
-          aspect-ratio: 1 / 1;
-          border-radius: 12px;
-          overflow: hidden;
-          background-size: cover;
-          background-position: center;
-          cursor: pointer;
-          transition: transform 0.3s ease;
-        }
+.service-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
       
-        .service-card:hover {
-          transform: scale(1.03);
-        }
+.service-card:hover {
+  transform: scale(1.03);
+}
       
-        .service-card:active {
-          transform: scale(0.98);
-        }
+.service-card:active {
+  transform: scale(0.98);
+}
       
-        .service-overlay {
-          position: absolute;
-          inset: 0;
-          background-color: rgba(0, 0, 0, 0.4);
-          transition: background-color 0.3s ease;
-          z-index: 1;
-        }
+.service-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
       
-        .service-card:hover .service-overlay {
-          background-color: rgba(0, 0, 0, 0.6);
-        }
+.service-card:hover .service-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
       
-        .service-title {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 2;
-          color: #fff;
-          font-weight: 700;
-          font-size: 1.2rem;
-          text-align: center;
-          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-          padding: 0 10px;
-        }
-
+.service-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  padding: 0 10px;
+}
+@media screen and (max-width: 814px) {
+  header {
+    display: none;
+  }
+}
         
 
 .card1 { background-image: url(/static/img/1.jpg); }
